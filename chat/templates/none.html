@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% block content %}
+<br/>
+<div class="col-md-6 offset-md-3">
+    <h1>Image Generator</h1>
+    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+    <br/>
+    <form method="POST" action="{% url 'image' %}">
+        {% csrf_token %}
+  <div class="mb-3">
+    <input type="text" class="form-control" name="prompt",
+           placeholder = "What image do you need?" required>
+  </div>
+            <br/>
+  <button type="submit" class="btn btn-primary">Generate Image</button>
+    </form>
+    {% if link != None %}
+        <br/>
+        <img src={{ link }}>
+    {% endif %}
+</div>
+{% endblock %}
